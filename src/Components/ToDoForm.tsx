@@ -1,7 +1,9 @@
 import * as React from 'react'
 import {TodoInterface, TodoFormInterface} from '../interface'
 
-let id = '0';
+const generateKey = () => {
+  return `${new Date().getTime()}`
+}
 
 const ToDoForm = (props: TodoFormInterface) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
@@ -17,7 +19,7 @@ const ToDoForm = (props: TodoFormInterface) => {
         if (event.key === 'Enter') {
           //prepare new todo object
           const newTodo: TodoInterface = {
-            id: id + '1',
+            id: generateKey(),
             name: values,
             isCompleted: false
           }
